@@ -18,4 +18,8 @@ public class PersonService {
     public Person findPersonById(Long id) {
         return personRepository.findById(id).orElseThrow();
     }
+
+    public void deletePersonById(Long id) {
+        personRepository.deleteById(id);
+    }
 }

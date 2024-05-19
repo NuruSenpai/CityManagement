@@ -14,8 +14,14 @@ public class PersonController {
     public Person createPerson(@RequestBody Person person) {
         return personService.createPerson(person);
     }
+
     @GetMapping("/get/{id}")
     public Person getPersonById(@PathVariable Long id) {
         return personService.findPersonById(id);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public void deletePersonById(@PathVariable Long id) {
+        personService.deletePersonById(id);
     }
 }
