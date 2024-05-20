@@ -22,4 +22,11 @@ public class PersonService {
     public void deletePersonById(Long id) {
         personRepository.deleteById(id);
     }
+
+    public Person updatePersonById(Long id, Person person) {
+        Person personToUpdate = personRepository.findById(id).orElseThrow();
+        personToUpdate.setName(person.getName());
+
+        return personRepository.save(personToUpdate);
+    }
 }
