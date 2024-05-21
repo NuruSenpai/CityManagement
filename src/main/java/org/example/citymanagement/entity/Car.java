@@ -1,8 +1,7 @@
 package org.example.citymanagement.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,4 +19,9 @@ public class Car {
     private  String brand;
     private  String model;
     private  String color;
+
+    @ManyToOne
+    @JoinColumn(name = "person_id")
+    @JsonBackReference
+    private Person person;
 }

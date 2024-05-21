@@ -1,7 +1,9 @@
 package org.example.citymanagement.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.example.citymanagement.entity.Car;
 import org.example.citymanagement.entity.Person;
+import org.example.citymanagement.service.CarService;
 import org.example.citymanagement.service.PersonService;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,9 +13,16 @@ import org.springframework.web.bind.annotation.*;
 public class PersonController {
     private final PersonService personService;
 
+
     @PostMapping("/create")
     public Person createPerson(@RequestBody Person person) {
         return personService.createPerson(person);
+
+    }
+
+    @PostMapping("/{personId}/cars")
+    public Car addCarToPerson(@PathVariable Long personId, @RequestBody Car car) {
+        return personService.addCarToPerson(personId, car);
     }
 
     @GetMapping("/get/{id}")
