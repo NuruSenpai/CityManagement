@@ -13,7 +13,7 @@ public class CarController {
 
     @PostMapping("/create")
     public Car createCar(@RequestBody Car car) {
-        return carService.createCar(car);
+        return carService.saveCar(car);
     }
 
     @GetMapping("/get/{id}")

@@ -8,10 +8,9 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-@NoArgsConstructor
 public class CarDTO {
     private Long id;
     private String brand;
     private String model;
-    private int color;
+    private String color;
 }

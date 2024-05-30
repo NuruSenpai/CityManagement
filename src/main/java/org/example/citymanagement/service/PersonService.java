@@ -1,36 +1,42 @@
 package org.example.citymanagement.service;
 
 import lombok.RequiredArgsConstructor;
+
 import org.example.citymanagement.entity.Car;
 import org.example.citymanagement.entity.Person;
+import org.example.citymanagement.exception.PersonNotFoundException;
 import org.example.citymanagement.repository.CarRepository;
 import org.example.citymanagement.repository.PersonRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @RequiredArgsConstructor
 @Service
 public class PersonService {
     private final PersonRepository personRepository;
-    private final CarRepository carRepository;
+    private final CarService carService;
 
-
-    public Person createPerson(Person person) {
-        return personRepository.save(person);
+    public List<Person> getAllPersons() {
+        return personRepository.findAll();
     }
 
+    public Person createPerson(Person person) {
+       return personRepository.save(person);
+    }
+
+    @Transactional()
     public Car addCarToPerson(Long personId, Car car) {
-        Person person = findPersonById(personId);
+        Person person = personRepository.findById(personId).orElseThrow();
         car.setPerson(person);
-        return carRepository.save(car);
+        person.getCar().add(car);
+        personRepository.save(person);
+        return carService.saveCar(car);
     }
 
     public Person findPersonById(Long id) {
-        return personRepository.findById(id).orElseThrow();
+        return personRepository.findById(id).orElseThrow(()-> new PersonNotFoundException(id));
     }
 
     public void deletePersonById(Long id) {
