@@ -1,7 +1,9 @@
 package org.example.citymanagement.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.example.citymanagement.DTO.CarDTO;
 import org.example.citymanagement.entity.Car;
+import org.example.citymanagement.mapper.CarMapper;
 import org.example.citymanagement.service.CarService;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,8 +14,9 @@ public class CarController {
     private final CarService carService;
 
     @PostMapping("/create")
-    public Car createCar(@RequestBody Car car) {
-        return carService.saveCar(car);
+    public CarDTO createCar(@RequestBody CarDTO carDTO) {
+        Car car = CarMapper.INSTANCE.carDTOToCar(carDTO);
+        return CarMapper.INSTANCE.carToCarDTO(carService.createCar(car));
     }
 
     @GetMapping("/get/{id}")

@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 public class CarService {
     private final CarRepository carRepository;
 
-    public Car saveCar(Car car) {
+    public Car createCar(Car car) {
         return carRepository.save(car);
     }
 

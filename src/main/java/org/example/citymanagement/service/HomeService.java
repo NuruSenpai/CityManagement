@@ -1,0 +1,27 @@
+package org.example.citymanagement.service;
+
+
+import lombok.RequiredArgsConstructor;
+import org.example.citymanagement.entity.Home;
+import org.example.citymanagement.repository.HomeRepository;
+import org.springframework.stereotype.Service;
+
+@RequiredArgsConstructor
+@Service
+public class HomeService {
+private final HomeRepository homeRepository;
+
+public Home createHome(Home home){
+    return homeRepository.save(home);
+}
+
+public Home findHomeById(Long id){
+    return homeRepository.findById(id).orElse(null);
+}
+
+public void deleteHomeById(Long id){
+    homeRepository.deleteById(id);
+}
+
+
+}

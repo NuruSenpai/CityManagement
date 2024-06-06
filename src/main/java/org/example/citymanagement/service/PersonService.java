@@ -3,9 +3,9 @@ package org.example.citymanagement.service;
 import lombok.RequiredArgsConstructor;
 
 import org.example.citymanagement.entity.Car;
+import org.example.citymanagement.entity.Home;
 import org.example.citymanagement.entity.Person;
 import org.example.citymanagement.exception.PersonNotFoundException;
-import org.example.citymanagement.repository.CarRepository;
 import org.example.citymanagement.repository.PersonRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,6 +17,7 @@ import java.util.List;
 public class PersonService {
     private final PersonRepository personRepository;
     private final CarService carService;
+    private final HomeService homeService;
 
     public List<Person> getAllPersons() {
         return personRepository.findAll();
@@ -32,7 +33,15 @@ public class PersonService {
         car.setPerson(person);
         person.getCar().add(car);
         personRepository.save(person);
-        return carService.saveCar(car);
+        return carService.createCar(car);
+    }
+
+    public Home addHomeToPerson(Long personId, Home home) {
+        Person person = personRepository.findById(personId).orElseThrow();
+        home.getPersons().add(person);
+        person.getHomes().add(home);
+        personRepository.save(person);
+        return homeService.createHome(home);
     }
 
     public Person findPersonById(Long id) {
