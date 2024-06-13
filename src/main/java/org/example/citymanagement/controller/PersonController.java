@@ -1,11 +1,8 @@
 package org.example.citymanagement.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.example.citymanagement.DTO.CarDTO;
 import org.example.citymanagement.DTO.PersonDTO;
-import org.example.citymanagement.entity.Car;
 import org.example.citymanagement.entity.Person;
-import org.example.citymanagement.mapper.CarMapper;
 import org.example.citymanagement.mapper.PersonMapper;
 import org.example.citymanagement.service.PersonService;
 import org.springframework.web.bind.annotation.*;
@@ -33,12 +30,6 @@ public class PersonController {
 
     }
 
-    @PostMapping("/{personId}/cars")
-    public CarDTO addCarToPerson(@PathVariable Long personId, @RequestBody CarDTO carDTO) {
-        Car car = CarMapper.INSTANCE.carDTOToCar(carDTO);
-        return CarMapper.INSTANCE.carToCarDTO(personService.addCarToPerson(personId, car));
-
-    }
 
     @GetMapping("/get/{id}")
     public Person getPersonById(@PathVariable Long id) {
@@ -54,4 +45,10 @@ public class PersonController {
     public Person updatePerson(@PathVariable Long id, @RequestBody Person person) {
         return personService.updatePersonById(id, person);
     }
+
+    @GetMapping("/passport-data")
+    public List<String> getPassportData(@RequestParam char letter) {
+        return personService.findPassportDataByLastName(letter);
+    }
+
 }

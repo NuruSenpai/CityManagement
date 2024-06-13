@@ -5,6 +5,8 @@ import org.example.citymanagement.entity.Car;
 import org.example.citymanagement.repository.CarRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 @Service
 public class CarService {
@@ -27,5 +29,9 @@ public class CarService {
         carToUpdate.setBrand(car.getBrand());
 
         return carRepository.save(carToUpdate);
+    }
+
+    public List<Car> findCarsByPersonId(Long personId) {
+        return carRepository.findAllByPersonId(personId);
     }
 }

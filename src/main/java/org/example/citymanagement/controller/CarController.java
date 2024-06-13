@@ -7,6 +7,8 @@ import org.example.citymanagement.mapper.CarMapper;
 import org.example.citymanagement.service.CarService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/cars")
@@ -33,4 +35,10 @@ public class CarController {
     public Car updateCar(@PathVariable Long id, @RequestBody Car car) {
         return carService.updateCarById(id, car);
     }
+
+    @GetMapping("/persons/{personId}")
+    public List<Car> getAllCarsByPersonId(@PathVariable Long personId) {
+        return carService.findCarsByPersonId(personId);
+    }
+
 }

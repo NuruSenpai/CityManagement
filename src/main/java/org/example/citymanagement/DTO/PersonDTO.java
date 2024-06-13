@@ -1,9 +1,12 @@
 package org.example.citymanagement.DTO;
 
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.example.citymanagement.enums.SexType;
 
 import java.util.List;
 
@@ -15,4 +18,8 @@ public class PersonDTO {
     private String name;
     private String surname;
     private List<CarDTO> cars;
+    private String passportData;
+
+    @Enumerated(EnumType.STRING)
+    private SexType sexType;
 }

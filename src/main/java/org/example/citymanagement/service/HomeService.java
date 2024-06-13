@@ -6,6 +6,8 @@ import org.example.citymanagement.entity.Home;
 import org.example.citymanagement.repository.HomeRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 @Service
 public class HomeService {
@@ -23,5 +25,9 @@ public void deleteHomeById(Long id){
     homeRepository.deleteById(id);
 }
 
+public List<Home> findAllHomeByStreet(String street){
+    return homeRepository.findAllByStreet("%"+street+"%");
+
+}
 
 }

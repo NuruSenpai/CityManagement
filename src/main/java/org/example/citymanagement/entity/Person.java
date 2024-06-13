@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.example.citymanagement.enums.SexType;
 import org.springframework.boot.autoconfigure.amqp.RabbitConnectionDetails;
 
 import java.util.ArrayList;
@@ -24,12 +25,22 @@ public class Person {
     private Long id;
     private String name;
     private String surname;
+    private String passportData;
+
+    @Enumerated(EnumType.STRING)
+    private SexType sexType;
+
 
     @OneToMany(mappedBy = "person", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
     private List<Car> car;
 
     @ManyToMany
+    @JoinTable(
+            name = "person_home",
+            joinColumns = @JoinColumn(name = "person_id"),
+            inverseJoinColumns = @JoinColumn(name = "home_id")
+    )
     private Set<Home> homes = new HashSet<>();
 
 

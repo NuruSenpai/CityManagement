@@ -12,6 +12,9 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@NamedQueries({
+        @NamedQuery(name = "Car.findAllByPersonId", query = "select c FROM Car c WHERE c.person.id = :personId")
+})
 public class Car {
     @Id
     @GeneratedValue

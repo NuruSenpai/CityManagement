@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
@@ -28,20 +29,21 @@ public class PersonService {
     }
 
     @Transactional()
-    public Car addCarToPerson(Long personId, Car car) {
-        Person person = personRepository.findById(personId).orElseThrow();
+    public Person addCarToPerson(Long personId, Long CarId) {
+        Person person = findPersonById(personId);
+        Car car = carService.findCarById(CarId);
         car.setPerson(person);
         person.getCar().add(car);
-        personRepository.save(person);
-        return carService.createCar(car);
+        return personRepository.save(person);
     }
 
-    public Home addHomeToPerson(Long personId, Home home) {
-        Person person = personRepository.findById(personId).orElseThrow();
+    @Transactional()
+    public Person addHomeToPerson(Long personId, Long HomeId) {
+        Person person = findPersonById(personId);
+        Home home = homeService.findHomeById(HomeId);
         home.getPersons().add(person);
         person.getHomes().add(home);
-        personRepository.save(person);
-        return homeService.createHome(home);
+        return personRepository.save(person);
     }
 
     public Person findPersonById(Long id) {
@@ -53,9 +55,20 @@ public class PersonService {
     }
 
     public Person updatePersonById(Long id, Person person) {
-        Person personToUpdate = personRepository.findById(id).orElseThrow();
+        Person personToUpdate = findPersonById(id);
         personToUpdate.setName(person.getName());
 
         return personRepository.save(personToUpdate);
+    }
+
+    public List<Person> findPersonsByStreet(String street) {
+       return homeService.findAllHomeByStreet(street).stream()
+                .flatMap(home -> home.getPersons().stream())
+                .collect(Collectors.toList());
+    }
+
+    public List<String> findPassportDataByLastName(char letter){
+        return personRepository.findPassportDataBySurnameStartingWith(letter + "%");
+
     }
 }
