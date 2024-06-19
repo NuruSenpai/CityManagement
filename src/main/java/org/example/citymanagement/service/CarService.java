@@ -9,7 +9,7 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @Service
-public class CarService {
+public class CarService implements org.example.citymanagement.service.serviceInterface.CarService {
     private final CarRepository carRepository;
 
     public Car createCar(Car car) {

@@ -10,7 +10,7 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @Service
-public class HomeService {
+public class HomeService implements org.example.citymanagement.service.serviceInterface.HomeService {
 private final HomeRepository homeRepository;
 
 public Home createHome(Home home){

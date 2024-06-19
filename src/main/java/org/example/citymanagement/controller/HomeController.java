@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/homes")
-public class HomeController {
+public class HomeController implements org.example.citymanagement.controller.controllerInterface.HomeController {
     private final HomeService homeService;
 
     @PostMapping("/create")

@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
-public class PersonService {
+public class PersonService implements org.example.citymanagement.service.serviceInterface.PersonService {
     private final PersonRepository personRepository;
     private final CarService carService;
     private final HomeService homeService;

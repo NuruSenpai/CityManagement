@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/RS")
-public class RelationshipController {
+public class RelationshipController implements org.example.citymanagement.controller.controllerInterface.RelationshipController {
     private final PersonService personService;
 
     @PostMapping("/{personId}/cars/{carId}")

@@ -6,11 +6,10 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
-import java.util.Objects;
 
 public interface PersonRepository extends JpaRepository<Person, Long> {
 
 
-    @Query(value = "select p.surname, p.passport_data FROM person p WHERE p.sex_type = 'MALE' AND p.surname LIKE :letter%", nativeQuery = true)
-    List<String> findPassportDataBySurnameStartingWith(@Param("letter") String letter);
+    @Query(value = "select p.surname, p.passport_data FROM person p WHERE p.sex_type = 'MALE' AND p.surname ilike :letter%", nativeQuery = true)
+    List<String> findPassportDataBySurnameStartingWith(@Param("letter") String letter); //TODO return list person
 }

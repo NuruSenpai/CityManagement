@@ -12,7 +12,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/cars")
-public class CarController {
+public class CarController implements org.example.citymanagement.controller.controllerInterface.CarController {
     private final CarService carService;
 
     @PostMapping("/create")

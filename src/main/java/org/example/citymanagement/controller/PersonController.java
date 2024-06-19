@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/persons")
-public class PersonController {
+public class PersonController implements org.example.citymanagement.controller.controllerInterface.PersonController {
     private final PersonService personService;
 
     @GetMapping
