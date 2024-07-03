@@ -11,14 +11,14 @@ public interface CarController {
     CarDTO createCar(@RequestBody CarDTO carDTO);
 
     @GetMapping("/get/{id}")
-    Car getCarById(@PathVariable Long id);
+    CarDTO getCarById(@PathVariable Long id);
 
     @DeleteMapping("/delete/{id}")
     void deleteCarById(@PathVariable Long id);
 
     @PutMapping("/update/{id}")
-    Car updateCar(@PathVariable Long id, @RequestBody Car car);
+    CarDTO updateCar(@PathVariable Long id, @RequestBody CarDTO carDTO);
 
     @GetMapping("/persons/{personId}")
-    List<Car> getAllCarsByPersonId(@PathVariable Long personId);
+    public List<CarDTO> getAllCarsByPersonId(@PathVariable Long personId);
 }

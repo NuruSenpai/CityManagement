@@ -9,6 +9,6 @@ import java.util.List;
 
 public interface HomeRepository extends JpaRepository<Home, Long> {
 
-    @Query(value = "select Home from Home h WHERE h.address ILIKE :street")
+    @Query(value = "select Home from Home h WHERE h.street ILIKE :street")
     List<Home> findAllByStreet(@Param("street") String street);
 }

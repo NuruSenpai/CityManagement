@@ -14,14 +14,17 @@ public interface PersonController {
     public PersonDTO createPerson(@RequestBody PersonDTO personDTO);
 
     @GetMapping("/get/{id}")
-    public Person getPersonById(@PathVariable Long id);
+    public PersonDTO getPersonById(@PathVariable Long id);
 
     @DeleteMapping("/delete/{id}")
     public void deletePersonById(@PathVariable Long id);
 
     @PutMapping("/update/{id}")
-    public Person updatePerson(@PathVariable Long id, @RequestBody Person person);
+    public PersonDTO updatePerson(@PathVariable Long id, @RequestBody PersonDTO personDTO);
 
     @GetMapping("/passport-data")
-    public List<String> getPassportData(@RequestParam char letter);
+    public List<PersonDTO> getPassportData(@RequestParam char letter);
+
+    @GetMapping("/person-by-street")
+    public List<PersonDTO> getPersonsByStreet(@RequestParam String street);
 }

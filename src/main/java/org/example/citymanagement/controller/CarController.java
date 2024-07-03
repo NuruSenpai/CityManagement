@@ -22,8 +22,8 @@ public class CarController implements org.example.citymanagement.controller.cont
     }
 
     @GetMapping("/get/{id}")
-    public Car getCarById(@PathVariable Long id) {
-        return carService.findCarById(id);
+    public CarDTO getCarById(@PathVariable Long id) {
+        return CarMapper.INSTANCE.carToCarDTO(carService.findCarById(id));
     }
 
     @DeleteMapping("/delete/{id}")
@@ -32,13 +32,14 @@ public class CarController implements org.example.citymanagement.controller.cont
     }
 
     @PutMapping("/update/{id}")
-    public Car updateCar(@PathVariable Long id, @RequestBody Car car) {
-        return carService.updateCarById(id, car);
+    public CarDTO updateCar(@PathVariable Long id, @RequestBody CarDTO carDTO) {
+        Car car = CarMapper.INSTANCE.carDTOToCar(carDTO);
+        return CarMapper.INSTANCE.carToCarDTO(carService.updateCarById(id, car));
     }
 
     @GetMapping("/persons/{personId}")
-    public List<Car> getAllCarsByPersonId(@PathVariable Long personId) {
-        return carService.findCarsByPersonId(personId);
+    public List<CarDTO> getAllCarsByPersonId(@PathVariable Long personId) {
+        return CarMapper.INSTANCE.carListToCarDTOList(carService.findCarsByPersonId(personId));
     }
 
 }

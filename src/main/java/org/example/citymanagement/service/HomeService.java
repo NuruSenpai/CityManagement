@@ -26,7 +26,7 @@ public void deleteHomeById(Long id){
 }
 
 public List<Home> findAllHomeByStreet(String street){
-    return homeRepository.findAllByStreet("%"+street+"%");
+    return homeRepository.findAllByStreet("%" + street + "%");
 
 }
 

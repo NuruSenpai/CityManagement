@@ -41,7 +41,7 @@ public class Person {
             joinColumns = @JoinColumn(name = "person_id"),
             inverseJoinColumns = @JoinColumn(name = "home_id")
     )
-    private Set<Home> homes = new HashSet<>();
+    private List<Home> homes;
 
 
 

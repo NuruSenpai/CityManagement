@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 public interface RelationshipController {
 
     @PostMapping("/{personId}/cars/{carId}")
-    public Person addCarToPerson(@PathVariable Long personId, @PathVariable Long carId);
+    public PersonDTO addCarToPerson(@PathVariable Long personId, @PathVariable Long carId);
 
     @PostMapping("/{personId}/homes/{homeId}")
     public PersonDTO addHomeToPerson(@PathVariable Long personId, @PathVariable Long homeId);

@@ -15,8 +15,8 @@ public class RelationshipController implements org.example.citymanagement.contro
     private final PersonService personService;
 
     @PostMapping("/{personId}/cars/{carId}")
-    public Person addCarToPerson(@PathVariable Long personId, @PathVariable Long carId) {
-        return personService.addCarToPerson(personId, carId);
+    public PersonDTO addCarToPerson(@PathVariable Long personId, @PathVariable Long carId) {
+        return PersonMapper.INSTANCE.personToPersonDTO(personService.addCarToPerson(personId, carId));
     }
 
     @PostMapping("/{personId}/homes/{homeId}")

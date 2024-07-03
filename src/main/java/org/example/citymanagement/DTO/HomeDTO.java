@@ -10,6 +10,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class HomeDTO {
     private long id;
-    private String address;
+    private String street;
+    private String numberOfHome;
     private int numberOfRooms;
 }

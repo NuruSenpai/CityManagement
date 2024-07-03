@@ -21,5 +21,5 @@ public interface PersonService {
 
     List<Person> findPersonsByStreet(String street);
 
-    List<String> findPassportDataByLastName(char letter);
+    List<Person> findPassportDataByLastName(char letter);
 }

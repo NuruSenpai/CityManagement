@@ -32,8 +32,8 @@ public class PersonController implements org.example.citymanagement.controller.c
 
 
     @GetMapping("/get/{id}")
-    public Person getPersonById(@PathVariable Long id) {
-        return personService.findPersonById(id);
+    public PersonDTO getPersonById(@PathVariable Long id) {
+        return PersonMapper.INSTANCE.personToPersonDTO(personService.findPersonById(id));
     }
 
     @DeleteMapping("/delete/{id}")
@@ -42,13 +42,18 @@ public class PersonController implements org.example.citymanagement.controller.c
     }
 
     @PutMapping("/update/{id}")
-    public Person updatePerson(@PathVariable Long id, @RequestBody Person person) {
-        return personService.updatePersonById(id, person);
+    public PersonDTO updatePerson(@PathVariable Long id, @RequestBody PersonDTO personDTO) {
+        Person person = PersonMapper.INSTANCE.personDTOToPerson(personDTO);
+        return PersonMapper.INSTANCE.personToPersonDTO(personService.updatePersonById(id, person));
     }
 
     @GetMapping("/passport-data")
-    public List<String> getPassportData(@RequestParam char letter) {
-        return personService.findPassportDataByLastName(letter);
+    public List<PersonDTO> getPassportData(@RequestParam char letter) {
+        return PersonMapper.INSTANCE.personListToPersonDTOList(personService.findPassportDataByLastName(letter));
     }
 
+    @GetMapping("/person-by-street")
+    public List<PersonDTO> getPersonsByStreet(@RequestParam String street) {
+        return PersonMapper.INSTANCE.personListToPersonDTOList(personService.findPersonsByStreet(street));
+    }
 }

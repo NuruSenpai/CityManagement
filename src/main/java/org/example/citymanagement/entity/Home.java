@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -18,11 +19,12 @@ public class Home {
     @Id
     @GeneratedValue
     private long id;
-    private String address;
+    private String street;
+    private String numberOfHome;
     private int numberOfRooms;
 
     @ManyToMany(mappedBy = "homes")
-    private Set<Person> persons = new HashSet<>();
+    private List<Person> persons;
 
 
 }

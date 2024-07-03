@@ -67,7 +67,7 @@ public class PersonService implements org.example.citymanagement.service.service
                 .collect(Collectors.toList());
     }
 
-    public List<String> findPassportDataByLastName(char letter){
+    public List<Person> findPassportDataByLastName(char letter){
         return personRepository.findPassportDataBySurnameStartingWith(letter + "%");
 
     }

@@ -27,6 +27,8 @@ public class CarService implements org.example.citymanagement.service.serviceInt
     public Car updateCarById(Long id, Car car) {
         Car carToUpdate = carRepository.findById(id).orElseThrow();
         carToUpdate.setBrand(car.getBrand());
+        carToUpdate.setModel(car.getModel());
+        carToUpdate.setColor(car.getColor());
 
         return carRepository.save(carToUpdate);
     }

@@ -3,12 +3,12 @@ package org.example.citymanagement.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.example.citymanagement.DTO.HomeDTO;
-import org.example.citymanagement.entity.Car;
 import org.example.citymanagement.entity.Home;
-import org.example.citymanagement.mapper.CarMapper;
 import org.example.citymanagement.mapper.HomeMapper;
 import org.example.citymanagement.service.HomeService;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -23,12 +23,17 @@ public class HomeController implements org.example.citymanagement.controller.con
     }
 
     @GetMapping("/get/{id}")
-    public Home getHomeById(@PathVariable Long id) {
-        return homeService.findHomeById(id);
+    public HomeDTO getHomeById(@PathVariable Long id) {
+        return HomeMapper.INSTANCE.homeToHomeDTO(homeService.findHomeById(id));
     }
 
     @DeleteMapping("/delete/{id}")
     public void deleteHomeById(@PathVariable Long id) {
         homeService.deleteHomeById(id);
+    }
+
+    @GetMapping("/get-all")
+    public List<HomeDTO> getAllHomesByStreet(@RequestParam String street){
+        return HomeMapper.INSTANCE.homeListToHomeDTOList(homeService.findAllHomeByStreet(street));
     }
 }
