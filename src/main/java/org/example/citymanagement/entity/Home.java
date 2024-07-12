@@ -17,10 +17,10 @@ import java.util.Set;
 @Entity
 public class Home {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String street;
-    private String numberOfHome;
+    private int numberOfHome;
     private int numberOfRooms;
 
     @ManyToMany(mappedBy = "homes")

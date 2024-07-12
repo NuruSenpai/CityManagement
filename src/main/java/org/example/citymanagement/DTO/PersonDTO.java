@@ -18,7 +18,7 @@ public class PersonDTO {
     private String name;
     private String surname;
     private List<CarDTO> cars;
-    private String passportData;
+
 
     @Enumerated(EnumType.STRING)
     private SexType sexType;

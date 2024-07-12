@@ -11,6 +11,6 @@ import lombok.Setter;
 public class HomeDTO {
     private long id;
     private String street;
-    private String numberOfHome;
+    private int numberOfHome;
     private int numberOfRooms;
 }

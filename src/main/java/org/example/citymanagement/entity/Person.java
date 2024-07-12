@@ -21,11 +21,10 @@ import java.util.Set;
 @Entity
 public class Person {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private String surname;
-    private String passportData;
 
     @Enumerated(EnumType.STRING)
     private SexType sexType;
