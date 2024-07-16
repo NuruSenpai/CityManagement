@@ -13,4 +13,14 @@ public class CarDTO {
     private String brand;
     private String model;
     private String color;
+
+    @Override
+    public String toString(){
+        return "CarDTO{" +
+                "id='" + id + '\'' +
+                " brand='" + brand + '\'' +
+                ", model='" + model + '\'' +
+                ", year=" + color +
+                '}';
+    }
 }

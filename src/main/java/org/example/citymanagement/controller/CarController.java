@@ -2,6 +2,7 @@ package org.example.citymanagement.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.example.citymanagement.DTO.CarDTO;
+import org.example.citymanagement.aspect.EnableLoger;
 import org.example.citymanagement.entity.Car;
 import org.example.citymanagement.mapper.CarMapper;
 import org.example.citymanagement.service.CarService;
@@ -37,6 +38,7 @@ public class CarController implements org.example.citymanagement.controller.cont
         return CarMapper.INSTANCE.carToCarDTO(carService.updateCarById(id, car));
     }
 
+    @EnableLoger(classType = "Long")
     @GetMapping("/persons/{personId}")
     public List<CarDTO> getAllCarsByPersonId(@PathVariable Long personId) {
         return CarMapper.INSTANCE.carListToCarDTOList(carService.findCarsByPersonId(personId));
