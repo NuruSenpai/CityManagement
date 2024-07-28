@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.example.citymanagement.enums.SexType;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Getter
@@ -18,6 +19,7 @@ public class PersonDTO {
     private String name;
     private String surname;
     private List<CarDTO> cars;
+    private BigDecimal balance;
 
 
     @Enumerated(EnumType.STRING)

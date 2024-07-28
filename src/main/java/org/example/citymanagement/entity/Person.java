@@ -9,6 +9,7 @@ import lombok.Setter;
 import org.example.citymanagement.enums.SexType;
 import org.springframework.boot.autoconfigure.amqp.RabbitConnectionDetails;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -25,6 +26,7 @@ public class Person {
     private Long id;
     private String name;
     private String surname;
+    private BigDecimal balance;
 
     @Enumerated(EnumType.STRING)
     private SexType sexType;

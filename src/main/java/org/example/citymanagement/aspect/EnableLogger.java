@@ -7,7 +7,7 @@ import java.lang.annotation.Target;
 
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface EnableLoger {
+public @interface EnableLogger {
     String classType() default "";
 
 }
