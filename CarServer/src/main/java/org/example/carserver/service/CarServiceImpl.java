@@ -1,7 +1,7 @@
 package org.example.carserver.service;
 
 import lombok.RequiredArgsConstructor;
-import org.example.carserver.carDTO.PersonDTO;
+import org.example.api.DTO.PersonDTO;
 import org.example.carserver.carrepository.CarRepository;
 import org.example.carserver.client.PersonClient;
 import org.example.carserver.service.carserviceinterface.CarService;
@@ -50,4 +50,6 @@ public class CarServiceImpl implements CarService {
         car.setPersonID(personId);
         return carRepository.save(car);
     }
+
+
 }

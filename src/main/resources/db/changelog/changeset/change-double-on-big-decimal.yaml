@@ -1,9 +1,0 @@
-databaseChangeLog:
-  - changeSet:
-      id: 1
-      author: Sabur
-      changes:
-        - modifyDataType:
-            tableName: person
-            columnName: balance
-            newDataType: DECIMAL(19, 2)

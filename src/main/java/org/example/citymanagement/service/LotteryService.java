@@ -22,7 +22,7 @@ public class LotteryService {
 
     private final Random random = new Random();
 
-    @Scheduled(fixedRate = 50000)
+    @Scheduled(fixedRate = 5000)
     public void runLottery(){
         List<Person> persons = personRepository.findAll();
         if(!persons.isEmpty()){

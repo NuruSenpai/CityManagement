@@ -6,7 +6,6 @@ import org.example.carserver.carcontroller.carcontrollerinterface.CarController;
 import org.example.carserver.service.CarServiceImpl;
 import org.example.carserver.entity.Car;
 import org.example.carserver.mapper.CarMapper;
-import org.example.carserver.client.PersonClient;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,7 +16,6 @@ import java.util.List;
 public class CarControllerImpl implements CarController {
     private final CarServiceImpl carService;
 
-    private final PersonClient personClient;
 
     @PostMapping("/create")
     public CarDTO createCar(@RequestBody CarDTO carDTO) {

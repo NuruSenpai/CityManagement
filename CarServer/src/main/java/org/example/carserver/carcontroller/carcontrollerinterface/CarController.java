@@ -19,5 +19,5 @@ public interface CarController {
     CarDTO updateCar(@PathVariable Long id, @RequestBody CarDTO carDTO);
 
     @GetMapping("/persons/{personId}")
-    public List<CarDTO> getAllCarsByPersonId(@PathVariable Long personId);
+    List<CarDTO> getAllCarsByPersonId(@PathVariable Long personId);
 }
