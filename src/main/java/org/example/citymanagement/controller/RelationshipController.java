@@ -14,11 +14,6 @@ import org.springframework.web.bind.annotation.*;
 public class RelationshipController implements org.example.citymanagement.controller.controllerInterface.RelationshipController {
     private final PersonService personService;
 
-    @PostMapping("/{personId}/cars/{carId}")
-    public PersonDTO addCarToPerson(@PathVariable Long personId, @PathVariable Long carId) {
-        return PersonMapper.INSTANCE.personToPersonDTO(personService.addCarToPerson(personId, carId));
-    }
-
     @PostMapping("/{personId}/homes/{homeId}")
     public PersonDTO addHomeToPerson(@PathVariable Long personId, @PathVariable Long homeId) {
         return PersonMapper.INSTANCE.personToPersonDTO(personService.addHomeToPerson(personId, homeId));

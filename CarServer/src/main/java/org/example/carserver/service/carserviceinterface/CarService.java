@@ -1,6 +1,7 @@
-package org.example.citymanagement.service.serviceInterface;
+package org.example.carserver.service.carserviceinterface;
 
-import org.example.citymanagement.entity.Car;
+
+import org.example.carserver.entity.Car;
 
 import java.util.List;
 

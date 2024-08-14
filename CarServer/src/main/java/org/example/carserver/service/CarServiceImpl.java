@@ -1,16 +1,20 @@
-package org.example.citymanagement.service;
+package org.example.carserver.service;
 
 import lombok.RequiredArgsConstructor;
-import org.example.citymanagement.entity.Car;
-import org.example.citymanagement.repository.CarRepository;
+import org.example.carserver.carDTO.PersonDTO;
+import org.example.carserver.carrepository.CarRepository;
+import org.example.carserver.client.PersonClient;
+import org.example.carserver.service.carserviceinterface.CarService;
+import org.example.carserver.entity.Car;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @RequiredArgsConstructor
 @Service
-public class CarService implements org.example.citymanagement.service.serviceInterface.CarService {
+public class CarServiceImpl implements CarService {
     private final CarRepository carRepository;
+    private final PersonClient personClient;
 
     public Car createCar(Car car) {
         return carRepository.save(car);
@@ -34,6 +38,16 @@ public class CarService implements org.example.citymanagement.service.serviceInt
     }
 
     public List<Car> findCarsByPersonId(Long personId) {
-        return carRepository.findAllByPersonId(personId);
+        return carRepository.findAllByPersonID(personId);
+    }
+
+    public Car addPersonToCar(Long personId, Long carId) {
+        PersonDTO personDTO =  personClient.getPersonById(personId);
+        if (personDTO == null) {
+            throw new RuntimeException("Person not found");
+        }
+        Car car = carRepository.findById(carId).orElseThrow();
+        car.setPersonID(personId);
+        return carRepository.save(car);
     }
 }

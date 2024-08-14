@@ -1,9 +1,7 @@
-package org.example.citymanagement.mapper;
+package org.example.carserver.mapper;
 
-import org.example.citymanagement.DTO.CarDTO;
-import org.example.citymanagement.DTO.HomeDTO;
-import org.example.citymanagement.entity.Car;
-import org.example.citymanagement.entity.Home;
+import org.example.carserver.carDTO.CarDTO;
+import org.example.carserver.entity.Car;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 

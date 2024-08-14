@@ -1,11 +1,12 @@
-package org.example.citymanagement.controller;
+package org.example.carserver.carcontroller;
 
 import lombok.RequiredArgsConstructor;
-import org.example.citymanagement.DTO.CarDTO;
-import org.example.citymanagement.aspect.EnableLogger;
-import org.example.citymanagement.entity.Car;
-import org.example.citymanagement.mapper.CarMapper;
-import org.example.citymanagement.service.CarService;
+import org.example.carserver.carDTO.CarDTO;
+import org.example.carserver.carcontroller.carcontrollerinterface.CarController;
+import org.example.carserver.service.CarServiceImpl;
+import org.example.carserver.entity.Car;
+import org.example.carserver.mapper.CarMapper;
+import org.example.carserver.client.PersonClient;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,8 +14,10 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/cars")
-public class CarController implements org.example.citymanagement.controller.controllerInterface.CarController {
-    private final CarService carService;
+public class CarControllerImpl implements CarController {
+    private final CarServiceImpl carService;
+
+    private final PersonClient personClient;
 
     @PostMapping("/create")
     public CarDTO createCar(@RequestBody CarDTO carDTO) {
@@ -38,10 +41,14 @@ public class CarController implements org.example.citymanagement.controller.cont
         return CarMapper.INSTANCE.carToCarDTO(carService.updateCarById(id, car));
     }
 
-    @EnableLogger(classType = "Long")
     @GetMapping("/persons/{personId}")
     public List<CarDTO> getAllCarsByPersonId(@PathVariable Long personId) {
         return CarMapper.INSTANCE.carListToCarDTOList(carService.findCarsByPersonId(personId));
+    }
+
+    @PostMapping("/{personId}/cars/{carId}")
+    public CarDTO addCarToPerson(@PathVariable Long personId, @PathVariable Long carId) {
+        return CarMapper.INSTANCE.carToCarDTO(carService.addPersonToCar(personId, carId));
     }
 
 }

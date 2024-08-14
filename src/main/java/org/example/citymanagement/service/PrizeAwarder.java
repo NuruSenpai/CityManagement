@@ -1,25 +1,22 @@
 package org.example.citymanagement.service;
 
-import org.example.citymanagement.aspect.EnableLogger;
+import lombok.RequiredArgsConstructor;
+import org.example.citymanagement.aspect.Robingood;
 import org.example.citymanagement.entity.Person;
 import org.example.citymanagement.repository.PersonRepository;
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 
+@RequiredArgsConstructor
 @Component
 public class PrizeAwarder {
 
 
     private final PersonRepository personRepository;
 
-    public PrizeAwarder(PersonRepository personRepository) {
-        this.personRepository = personRepository;
-    }
 
-    @Transactional
-    @EnableLogger
+    @Robingood
     public void awardPrize(Person winner) {
         BigDecimal prizeAmount = new BigDecimal("100.00");
         if (winner.getBalance() == null) {

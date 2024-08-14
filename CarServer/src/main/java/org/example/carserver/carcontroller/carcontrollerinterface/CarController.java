@@ -1,7 +1,6 @@
-package org.example.citymanagement.controller.controllerInterface;
+package org.example.carserver.carcontroller.carcontrollerinterface;
 
-import org.example.citymanagement.DTO.CarDTO;
-import org.example.citymanagement.entity.Car;
+import org.example.carserver.carDTO.CarDTO;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

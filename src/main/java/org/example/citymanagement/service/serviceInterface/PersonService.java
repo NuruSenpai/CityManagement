@@ -9,8 +9,6 @@ public interface PersonService {
 
     Person createPerson(Person person);
 
-    Person addCarToPerson(Long personId, Long CarId);
-
     Person addHomeToPerson(Long personId, Long HomeId);
 
     Person findPersonById(Long id);
