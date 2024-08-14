@@ -2,7 +2,6 @@ package org.example.citymanagement.service;
 
 import lombok.RequiredArgsConstructor;
 
-import org.example.citymanagement.entity.Car;
 import org.example.citymanagement.entity.Home;
 import org.example.citymanagement.entity.Person;
 import org.example.citymanagement.exception.PersonNotFoundException;
@@ -17,7 +16,6 @@ import java.util.stream.Collectors;
 @Service
 public class PersonService implements org.example.citymanagement.service.serviceInterface.PersonService {
     private final PersonRepository personRepository;
-    private final CarService carService;
     private final HomeService homeService;
 
     public List<Person> getAllPersons() {
@@ -26,15 +24,6 @@ public class PersonService implements org.example.citymanagement.service.service
 
     public Person createPerson(Person person) {
        return personRepository.save(person);
-    }
-
-    @Transactional()
-    public Person addCarToPerson(Long personId, Long CarId) {
-        Person person = findPersonById(personId);
-        Car car = carService.findCarById(CarId);
-        car.setPerson(person);
-        person.getCar().add(car);
-        return personRepository.save(person);
     }
 
     @Transactional()

@@ -1,18 +1,14 @@
 package org.example.citymanagement.entity;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.example.citymanagement.enums.SexType;
-import org.springframework.boot.autoconfigure.amqp.RabbitConnectionDetails;
 
-import java.util.ArrayList;
-import java.util.HashSet;
+import java.math.BigDecimal;
 import java.util.List;
-import java.util.Set;
 
 @Getter
 @Setter
@@ -25,14 +21,13 @@ public class Person {
     private Long id;
     private String name;
     private String surname;
+    private BigDecimal balance;
 
     @Enumerated(EnumType.STRING)
     private SexType sexType;
 
 
-    @OneToMany(mappedBy = "person", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
-    private List<Car> car;
+
 
     @ManyToMany
     @JoinTable(
