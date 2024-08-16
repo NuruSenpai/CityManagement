@@ -30,13 +30,13 @@ public class LoggerAspect {
         Object[] args = joinPoint.getArgs();
         for (Object arg : args) {
             if (arg instanceof Person winner) {
-                List<CarDTO> cars = carClient.getCarsByPersonId(winner.getId());
+                List<CarDTO> cars = carClient.getAllCarsByPersonId(winner.getId());
                 if (!cars.isEmpty()) {
                     log.info("У {} есть машина", winner.getName());
 
                     List<Person> persons = personRepository.findAll();
                     List<Person> personsWithoutCars = persons.stream()
-                            .filter(person -> carClient.getCarsByPersonId(person.getId()).isEmpty())
+                            .filter(person -> carClient.getAllCarsByPersonId(person.getId()).isEmpty())
                             .toList();
 
                     if (!personsWithoutCars.isEmpty()) {

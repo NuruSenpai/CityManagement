@@ -7,23 +7,23 @@ import java.util.List;
 
 public interface PersonController {
     @GetMapping
-     List<PersonDTO> getAllPerson();
+    List<PersonDTO> getAllPerson();
 
     @PostMapping("/create")
-     PersonDTO createPerson(@RequestBody PersonDTO personDTO);
+    PersonDTO createPerson(@RequestBody PersonDTO personDTO);
 
     @GetMapping("/get/{id}")
-     PersonDTO getPersonById(@PathVariable Long id);
+    PersonDTO getPersonById(@PathVariable Long id);
 
     @DeleteMapping("/delete/{id}")
-     void deletePersonById(@PathVariable Long id);
+    void deletePersonById(@PathVariable Long id);
 
     @PutMapping("/update/{id}")
-     PersonDTO updatePerson(@PathVariable Long id, @RequestBody PersonDTO personDTO);
+    PersonDTO updatePerson(@PathVariable Long id, @RequestBody PersonDTO personDTO);
 
     @GetMapping("/passport-data")
-     List<PersonDTO> getPassportData(@RequestParam char letter);
+    List<PersonDTO> getPassportData(@RequestParam char letter);
 
     @GetMapping("/person-by-street")
-     List<PersonDTO> getPersonsByStreet(@RequestParam String street);
+    List<PersonDTO> getPersonsByStreet(@RequestParam String street);
 }
