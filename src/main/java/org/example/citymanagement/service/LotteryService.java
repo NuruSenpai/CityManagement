@@ -4,6 +4,7 @@ package org.example.citymanagement.service;
 import lombok.RequiredArgsConstructor;
 import org.example.citymanagement.entity.Person;
 import org.example.citymanagement.repository.PersonRepository;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +17,6 @@ public class LotteryService {
 
 
     private final PersonRepository personRepository;
-
     private final PrizeAwarder prizeAwarder;
 
 
@@ -29,7 +29,6 @@ public class LotteryService {
             Person winner = persons.get(random.nextInt(persons.size()));
             prizeAwarder.awardPrize(winner);
         }
-
     }
 
 

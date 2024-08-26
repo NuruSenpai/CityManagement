@@ -17,6 +17,7 @@ import java.util.stream.Collectors;
 public class PersonService implements org.example.citymanagement.service.serviceInterface.PersonService {
     private final PersonRepository personRepository;
     private final HomeService homeService;
+    private final KafkaSenderService kafkaSenderService;
 
     public List<Person> getAllPersons() {
         return personRepository.findAll();
@@ -41,6 +42,7 @@ public class PersonService implements org.example.citymanagement.service.service
 
     public void deletePersonById(Long id) {
         personRepository.deleteById(id);
+        kafkaSenderService.send("person-deleted", String.valueOf(id));
     }
 
     public Person updatePersonById(Long id, Person person) {

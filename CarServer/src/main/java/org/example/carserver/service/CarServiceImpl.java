@@ -51,5 +51,12 @@ public class CarServiceImpl implements CarService {
         return carRepository.save(car);
     }
 
+    public void deleteAllOfPersonCars(Long personId) {
+        List<Car> cars = findCarsByPersonId(personId);
+        for (Car car : cars) {
+            deleteCarById(car.getId());
+        }
+    }
+
 
 }

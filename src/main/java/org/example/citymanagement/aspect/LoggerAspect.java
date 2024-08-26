@@ -5,7 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
-import org.example.citymanagement.DTO.CarDTO;
+import org.example.api.DTO.CarDTO;
 import org.example.citymanagement.client.CarClient;
 import org.example.citymanagement.entity.Person;
 import org.example.citymanagement.repository.PersonRepository;
