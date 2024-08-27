@@ -11,8 +11,7 @@ public class KafkaConsumerService {
     private final CarServiceImpl carService;
 
     @KafkaListener(topics = "person-deleted", groupId = "car-service")
-    public void listen(String message) {
-        Long personId = Long.valueOf(message);
+    public void listen(Long personId) {
         carService.deleteAllOfPersonCars(personId);
     }
 }

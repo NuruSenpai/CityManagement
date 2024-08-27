@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Configuration
-public class TestKafkaConfig {
+public class PersonProducerKafkaConfig {
 
     @Bean
     public NewTopic topic() {
@@ -37,8 +37,9 @@ public class TestKafkaConfig {
     }
 
     @Bean
-    public KafkaTemplate<String,Object> kafkaTemplate(){
+    public KafkaTemplate<String, Object> kafkaTemplate() {
         return new KafkaTemplate<>(producerFactory());
     }
+
 
 }

@@ -42,7 +42,8 @@ public class PersonService implements org.example.citymanagement.service.service
 
     public void deletePersonById(Long id) {
         personRepository.deleteById(id);
-        kafkaSenderService.send("person-deleted", String.valueOf(id));
+        kafkaSenderService.send("person-deleted", id);
+
     }
 
     public Person updatePersonById(Long id, Person person) {
