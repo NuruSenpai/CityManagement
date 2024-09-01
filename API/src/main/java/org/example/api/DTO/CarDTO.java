@@ -13,6 +13,7 @@ public class CarDTO {
     private String model;
     private String color;
 
+
     @Override
     public String toString(){
         return "CarDTO{" +

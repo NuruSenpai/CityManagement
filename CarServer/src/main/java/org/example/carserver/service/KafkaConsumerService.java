@@ -12,6 +12,7 @@ public class KafkaConsumerService {
 
     @KafkaListener(topics = "person-deleted", groupId = "car-service")
     public void listen(Long personId) {
+        System.out.println("Received personId: " + personId);
         carService.deleteAllOfPersonCars(personId);
     }
 }

@@ -7,6 +7,7 @@ import org.example.carserver.client.PersonClient;
 import org.example.carserver.service.carserviceinterface.CarService;
 import org.example.carserver.entity.Car;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -51,8 +52,10 @@ public class CarServiceImpl implements CarService {
         return carRepository.save(car);
     }
 
+    @Transactional
     public void deleteAllOfPersonCars(Long personId) {
-        carRepository.deleteAllByPersonID(personId);
+        System.out.println("Deleting cars for personId: " + personId);
+        carRepository.deleteCarsByPersonID(personId);
     }
 
 
