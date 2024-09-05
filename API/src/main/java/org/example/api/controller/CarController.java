@@ -1,4 +1,4 @@
-package org.example.api.Contoller;
+package org.example.api.controller;
 
 import org.example.api.DTO.CarDTO;
 import org.springframework.web.bind.annotation.*;

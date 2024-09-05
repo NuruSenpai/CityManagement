@@ -1,10 +1,10 @@
-package org.example.citymanagement.DTO;
+package org.example.carserver.carDTO;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
-import org.example.citymanagement.enums.PersonStatus;
-import org.example.citymanagement.enums.SexType;
+import org.example.carserver.enums.PersonStatus;
+import org.example.carserver.enums.SexType;
 
 import java.math.BigDecimal;
 

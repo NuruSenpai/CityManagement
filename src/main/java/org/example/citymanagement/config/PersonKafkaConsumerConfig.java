@@ -1,4 +1,4 @@
-package org.example.carserver.config;
+package org.example.citymanagement.config;
 
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
@@ -17,7 +17,7 @@ import java.util.Map;
 
 @EnableKafka
 @Configuration
-public class KafkaConsumerConfig {
+public class PersonKafkaConsumerConfig {
 
     @Value("${spring.kafka.bootstrap-servers}")
     private String bootstrapServers;

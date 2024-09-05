@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 
 import org.example.citymanagement.entity.Home;
 import org.example.citymanagement.entity.Person;
+import org.example.citymanagement.enums.PersonStatus;
 import org.example.citymanagement.exception.PersonNotFoundException;
 import org.example.citymanagement.repository.PersonRepository;
 import org.springframework.stereotype.Service;
@@ -40,10 +41,22 @@ public class PersonService implements org.example.citymanagement.service.service
         return personRepository.findById(id).orElseThrow(()-> new PersonNotFoundException(id));
     }
 
+    @Transactional
     public void deletePersonById(Long id) {
-        personRepository.deleteById(id);
+        Person person = personRepository.findById(id)
+                .orElseThrow(() -> new PersonNotFoundException(id));
+        person.setStatus(PersonStatus.DELETED);
+        personRepository.save(person);
+
         kafkaSenderService.send("person-deleted", id);
 
+    }
+
+    public void restorePersonStatus(Long id){
+        Person person = personRepository.findById(id)
+                .orElseThrow(()-> new PersonNotFoundException(id));
+        person.setStatus(PersonStatus.ACTIVE);
+        personRepository.save(person);
     }
 
     public Person updatePersonById(Long id, Person person) {

@@ -1,19 +1,18 @@
-package org.example.carserver.service;
+package org.example.citymanagement.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 @RequiredArgsConstructor
 @Service
 public class KafkaConsumerService {
 
-    private final CarServiceImpl carService;
+    private final PersonService personService;
 
-    @KafkaListener(topics = "person-deleted", groupId = "car-service")
+    @KafkaListener(topics = "restore-person", groupId = "person-service")
     public void listen(Long personId) {
         System.out.println("Received personId: " + personId);
-        carService.deleteAllOfPersonCars(personId);
+        personService.restorePersonStatus(personId);
     }
 }

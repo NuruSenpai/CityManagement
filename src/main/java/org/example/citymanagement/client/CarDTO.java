@@ -1,9 +1,8 @@
-package org.example.carserver.carDTO;
+package org.example.citymanagement.client;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
-import org.example.carserver.enums.CarStatus;
 
 @Getter
 @Setter

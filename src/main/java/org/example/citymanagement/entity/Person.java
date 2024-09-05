@@ -1,10 +1,8 @@
 package org.example.citymanagement.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import org.example.citymanagement.enums.PersonStatus;
 import org.example.citymanagement.enums.SexType;
 
 import java.math.BigDecimal;
@@ -22,6 +20,10 @@ public class Person {
     private String name;
     private String surname;
     private BigDecimal balance;
+
+
+    @Enumerated(EnumType.STRING)
+    private PersonStatus status = PersonStatus.ACTIVE;
 
     @Enumerated(EnumType.STRING)
     private SexType sexType;

@@ -3,6 +3,7 @@ package org.example.api.DTO;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
+import org.example.api.enums.CarStatus;
 
 @Getter
 @Setter
@@ -12,6 +13,7 @@ public class CarDTO {
     private String brand;
     private String model;
     private String color;
+    private CarStatus status;
 
 
     @Override

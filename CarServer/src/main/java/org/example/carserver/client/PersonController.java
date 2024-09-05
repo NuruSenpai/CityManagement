@@ -1,6 +1,6 @@
-package org.example.api.Contoller;
+package org.example.carserver.client;
 
-import org.example.api.DTO.PersonDTO;
+import org.example.carserver.carDTO.PersonDTO;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,7 +12,7 @@ public interface PersonController {
     @PostMapping("/create")
     PersonDTO createPerson(@RequestBody PersonDTO personDTO);
 
-    @GetMapping("/get/{id}")
+    @GetMapping("persons/get/{id}")
     PersonDTO getPersonById(@PathVariable Long id);
 
     @DeleteMapping("/delete/{id}")

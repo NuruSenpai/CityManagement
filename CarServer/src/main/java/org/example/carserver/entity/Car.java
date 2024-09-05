@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.example.carserver.enums.CarStatus;
 
 
 @Getter
@@ -20,6 +21,10 @@ public class Car {
     private  String brand;
     private  String model;
     private  String color;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status")
+    private CarStatus status = CarStatus.ACTIVE;
 
     @Column(name = "person_id")
     private Long personID;
